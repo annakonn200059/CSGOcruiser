@@ -1,0 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=cyrillic-ext);
+*{box-sizing:border-box;margin:0;padding:0;font-family:Roboto,sans-serif}a{text-decoration:none}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    background: url(../images/stars_shroud_nebula_155231_3840x2160.jpg) center top no-repeat rgb(18, 2, 5);
+}
+
+
+a:active, a:focus {
+    color: #719bd7;
+    text-decoration: none;
+    outline: none;
+}
+
+a {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+
+    
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+ul{
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: -70px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+}
+
+.header__logo__block{
+    text-align: center;
+    margin: 20px 0px;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.container{max-width:1200px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+div {
+    display: block;
+}
+
+.header__right-block{
+    text-align: right;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.steam_line{
+    margin-top: 10px;
+
+}
+
+.steam-button {
+    font-size: 14px;
+    margin-left: 20px;
+    padding: 6px 15px 6px 60px;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.link_line{
+    margin-top: 20px;
+    text-align: center;
+    
+
+}
+
+.main_links>li {
+    display: inline-block;
+    margin-left: 60px;
+}
+
+.main_links>li>a {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.bottom_logo_pic{
+    width: 100px;
+}
+
+.divider{width:330px;height:1px;margin:0 auto;background-color:rgba(0,0,0,.5)}
+
+.title{font-size:36px;font-weight:400}
+
+.header{margin-top: 30px;}
+
+
+
+
+
+
+
+
+
+
+.footer{background-color:#303030; padding:45px 0 50px 0;color:#fff}
+
+.footer .container{height:100%;display:flex;justify-content:space-between;align-items:flex-end}
+
+.footer .subtitle{font-size:17px}
+
+.footer .link{display:block;margin-top:15px;font-size:16px;color:#fff}
+
+.footer .call{text-align:right}
+
+.show{display:block}
+
+.hide{display:none}
+
+.fade{animation-name: fade; animation-duration: 1.5s;}@keyframes fade{from{opacity: 0.1;}to{opacity: 1;}}
