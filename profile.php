@@ -1,28 +1,13 @@
-<html lang="en">
-<link rel="stylesheet" href="css/style.css">
 <?php require_once "db.php";
 require_once "steamauth/userInfo.php";
 /*require_once "steamauth/steamauth.php";*/
 ?>
+<html lang="en">
+<link rel="stylesheet" href="css/style.css">
 <body>
-<?php if((isset($_SESSION['steamid']))) :?>
-    <?php if (R::count('steamuser', "steam = ?", array($_SESSION['steamid'])) == 0) {
-        $steamuser = R::dispense('steamuser');
-        $steamuser->steam = $steamprofile['steamid'];
-        $steamuser->username = $steamprofile['personaname'];
-        $steamuser->regdate = R::isoDate();
-        R::store($steamuser);
-    } 
-    echo "<img src =\"$steamprofile[avatarmedium]\">"; //avatar
-    $user = R::findOne('steamuser', "steam = ?", array($_SESSION['steamid']));
-    if (!isset($user->tradelink)) {
-        echo "Введите ссылку на обмен в профиле!";
-    }
-    ?>
-<?php endif; ?>
 
 <?php
- require_once "db.php";
+//сделай чтобы красиво были ава там балансы и тд короче ниже помощь в 26 строке пример как сунут пхп в хтмл я пойду посмотрю про магазин люблю тебя
  require_once "steamauth/userInfo.php";
  echo "<img src =\"$steamprofile[avatarmedium]\"> <br>";
  echo $steamprofile['personaname'];
@@ -32,16 +17,16 @@ require_once "steamauth/userInfo.php";
 ?>
     
 <div class="link_line">
-    <a><?php echo'<a href="'.$url.'" target=_\'blank\'>'.'Где взять ссылку?'.'</a>'; ?></a>
+    <a><?php echo'<a href="'.$url.'" target=_\'blank\'>'.'Click here for get your trade URL'.'</a>'; ?></a>
 </div>
 
 <div class="header__logo__block">
     <form action="/profile.php" method="post">
         <p>
-            <input type="text" name="tradelink" value="<?php echo $cur->tradelink; ?>"> </input>
+            <input type="text" name="tradelink" value="<?php echo $cur->tradelink; ?>"> </input> 
         </p>
         <p>
-            <button type="submit" name="trade_submit">Готово</button>
+            <button type="submit" name="trade_submit">Enter</button>
         </p>
     </form>
 </div>
@@ -50,13 +35,13 @@ require_once "steamauth/userInfo.php";
     if(isset($data['trade_submit'])){
         require_once "tradevalidate.php";
         if ($link) {
-            echo 'Ссылка обмена неверная!';
+            echo 'Invalid link!';
         }
         else {
             $user = R::findOne('steamuser', "steam = ?", array($_SESSION['steamid']));
             $user->tradelink = $data['tradelink'];
             R::store($user);
-            echo "Готово!";
+            echo "Ok!";
         }
     }
     
@@ -72,10 +57,7 @@ require_once "steamauth/userInfo.php";
     <div class="link_line">
         <ul class="main_links">
             <li>
-                <a href="/index.html">На главную</a>
-            </li>
-            <li>
-                <a href="/steamauth/logout.php">Выйти из Steam</a> 
+                <a href="/steamauth/logout.php">Logout</a> 
             </li>
         </ul>
     </div>

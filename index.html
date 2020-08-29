@@ -1,3 +1,4 @@
+<?php require "db.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSGOCruiser</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
 </head>
 <body>
+<?php
+require_once "steamauth/steamauth.php";
+require_once "steamauth/userInfo.php";
+?>
+
         <div class="container header">
             <div class="line">
                     <div class="header__logo__block">
@@ -17,20 +24,47 @@
                        
                     <div class="header__right-block">
 
-                        <div class="steam_line">
-                            <a href="/steamauth/steamauth.php"class="steam_button"><img alt="" src="images/login.png"></a>
+                        <div class="link_line">
+                            <ul class="main_links">
+                                <li>
+                                    <a href="/game.php" class="header__link">Games</a>
+                                </li>
+                                <li>
+                                    <a href="/shop.php" class="header__link">Shop</a>
+                                </li>
+                            </ul>
                         </div>
 
+                        <?php if(!isset($_SESSION['steamid'])) : ?>
+
+                        <div class="steam_line">
+                            <a href="/index.html?login" class="steam_button"><img alt="" src="images/login.png"></a>
+                        </div>
+
+                        <?php else : 
+                            echo "<a href=\"/profile.php\" class=\"my_profile\"><img alt=\"\" src=\"$steamprofile[avatarmedium]\"></a>";
+                            $user = R::findOne('steamuser', "steam = ?", array($_SESSION['steamid']));
+                            if (!isset($user->tradelink)) {
+                                echo "You must enter your trade URL!";
+                            }
+                            require_once "create-user.php";?>
                         <div class="link_line">
                                 <ul class="main_links">
                                     <li>
-                                        <a href="/steamauth/logout.php" class="header__link">Выйти из Steam</a> 
+                                        <a href="/profile.php" class="header__link">My profile</a>
                                     </li>
                                     <li>
-                                        <a href="/profile.php" class="header__link">Мой профиль</a>
+                                        <a href="/profile.php?inventory" class="header_link">My inventory</a>
+                                    </li>
+                                    <li>
+                                        <a href="/affiliates.php" class="header_link">Free coins</a>
+                                    </li>
+                                    <li>
+                                        <a href="/steamauth/logout.php" class="header__link">Logout</a>
                                     </li>
                                 </ul>
                         </div>
+                        <?php endif; ?>
                  </div>
             </div>
             </div>
@@ -38,7 +72,7 @@
     <footer class="footer">
         <div class="container">
             <div class="social">
-                <div class="subtitle">Мы в социальных сетях:</div>
+                <div class="subtitle">Other pages:</div>
                 <a href="#" class="link">instagram</a>
                 <a href="#" class="link">facebook</a>
             </div>
@@ -46,8 +80,8 @@
                 <img src="images/logo.png" alt="cruiser" class="bottom_logo_pic">
             </div>
             <div class="call">
-                <div class="subtitle">Или позвоните нам</div>
-                <a href="#" class="link">+380678341034</a>
+                <div class="subtitle">Support</div>
+                <a href="#" class="link">example@gmail.com</a>
                 <a href="#" class="link">+380500941356</a>
             </div>
         </div>

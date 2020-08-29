@@ -1,0 +1,7 @@
+RemoveHandler .html .htm
+AddType application/x-httpd-php .php .htm .html .phtml
+
+RewriteCond %{THE_REQUEST} ^\S+\s/index\.html
+RewriteRule ^  https://csgocruiser/home [R=301,L]
+
+RewriteRule ^home$ /index.html [L]
